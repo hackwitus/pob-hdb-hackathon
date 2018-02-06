@@ -1,3 +1,25 @@
-<p>
-  inventory works!
-</p>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Options</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-list>
+        <a mat-list-item>Advanced Search</a>
+        <a mat-list-item>Transaction History</a>
+        
+      </mat-list>
+  </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+          <span>POB</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-data-table>
+        
+      </mat-data-table>
+    </mat-sidenav-content>
+</mat-sidenav-container>
