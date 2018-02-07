@@ -32,9 +32,9 @@ function dbGetAsync(url, callback) {
 
 var url = "https://pod-hdb-api.herokuapp.com/customers/:phoneNumber";
 
-$(document).ready(function() {
-  dbGetAsync(url, displayData());
-});
+// $(document).ready(function() {
+//   dbGetAsync(url, displayData());
+// });
 
 function displayData(data) {
   console.log(data);

@@ -16,17 +16,12 @@ import {MatToolbarModule,
         MatIconModule,
         MatTableModule,
         MatSidenavModule,
-<<<<<<< Updated upstream
         MatListModule,
         MatFormFieldModule,
         MatInputModule,
         MatCheckboxModule} from "@angular/material"
-        
-=======
-        MatListModule} from "@angular/material";
-import { TableComponent } from './table/table.component';
-import { TableRowComponent } from './table-row/table-row.component'
->>>>>>> Stashed changes
+
+
 const appRoutes:Routes=[
   {path:'', redirectTo:'inventory', pathMatch:'full'},
   {path:'inventory', component:InventoryComponent},
@@ -36,9 +31,7 @@ const appRoutes:Routes=[
   declarations: [
     AppComponent,
     InventoryComponent,
-    CheckoutComponent,
-    TableComponent,
-    TableRowComponent
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
