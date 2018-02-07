@@ -1,0 +1,75 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Options</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-list>
+        <a mat-list-item>Advanced Search</a>
+        <a mat-list-item>Transaction History</a>
+        
+      </mat-list>
+  </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+          <span>POB</span>
+          <span class="fill-space"></span>
+          <button mat-raised-button color="accent"(click)="goToCheckout()">Checkout ({{selectedItems}})</button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div class="example-container mat-elevation-z8">
+        <div class="example-header">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+          </mat-form-field>
+        </div>
+      
+        <mat-table #table [dataSource]="dataSource">
+      
+              <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            (change)="updateCheckout()"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            (change)="updateCheckout()"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </mat-cell>
+          </ng-container>
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          </ng-container>
+      
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+          </ng-container>
+      
+          <!-- Availibility Column -->
+          <ng-container matColumnDef="available">
+            <mat-header-cell *matHeaderCellDef> Available </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <mat-icon 
+              [ngClass]="{'is-available':element.available, 'not-available':!element.available}">{{element.available ? 'check':'clear'}}</mat-icon></mat-cell>
+          </ng-container>
+      
+
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

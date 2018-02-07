@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* 
+body {
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: 23% 77%;
+  grid-template-rows: 14vh 86vh auto;
+}
+
+#header {
+  //background-color: blue;
+  border: solid 1px black;
+
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#title {
+
+}
+
+#checkoutBtn {
+  float: right;
+}
+
+#filters {
+  //background-color: yellow;
+  border: solid 1px black;
+
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#items {
+  //background-color: green;
+  border: solid 1px black;
+
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+} */
