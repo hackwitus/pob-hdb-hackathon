@@ -10,61 +10,39 @@ export class CheckoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
-
-
-
 }
 
-
+function checkUser() {
+  var url = "https://pod-hdb-api.herokuapp.com/customer/:phoneNumber";
+  console.log("Starting code");
+  dbGetAsync(url, displayData);
+}
 
 function dbGetAsync(url, callback) {
   var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
+            callback(JSON.parse(xmlHttp.responseText));
     }
     xmlHttp.open("GET", url, true); // true for asynchronous
     xmlHttp.send(null);
 }
 
-//var isUser = false;
+var displayData = function(data) {
+  console.log("got the data!");
 
-var url = "https://pod-hdb-api.herokuapp.com/customers/:phoneNumber";
+  if (data.length == 0) {
+    //present user creation screen
+  }
 
-// $(document).ready(function() {
-//   dbGetAsync(url, displayData());
-// });
-
-function displayData(data) {
-  console.log(data);
-}
-
-  // function checkUser($('#phoneNumber')) {
-  //   return new Promise((resolve, reject) => {
-  //     var url = "https://pod-hdb-api.herokuapp.com/customers/:phoneNumber";
-  //     dbGetAsync(url, callback);
-  //   })
+  // data.forEach(number) {
+  //
+  //   if (document.getElementById('#phoneNumber') == number) {
+  //     //present checkout screen
+  //   }
+  //   //present user creation screen
   // }
-
-
-   // = new Promise (
-   //  function(userExists, userNon){
-   //    dbGetAsync(url, checkNumber);
-   //    if (isUser) {
-        //direct to checkout
-        //GET: /customers/:phoneNumber
-      // }
-      //return userExists, direct to next page
-      // else {
-      //   userNon();
-        //direct user to input information
-        //POST: `/customers/new`
-        //body: {
-        //name: (String),
-        //email: (String),
-        //phoneNumber: (String)
-        //}
-  //   }
-  //   }
-  // )
+   console.log(data[0].name == "Raspberry Pi 3");
+}
