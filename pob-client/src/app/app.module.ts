@@ -13,7 +13,9 @@ import {MatToolbarModule,
         MatIconModule,
         MatTableModule,
         MatSidenavModule,
-        MatListModule} from "@angular/material"
+        MatListModule,
+        MatFormFieldModule,
+        MatInputModule} from "@angular/material"
 const appRoutes:Routes=[
   {path:'', redirectTo:'inventory', pathMatch:'full'},
   {path:'inventory', component:InventoryComponent},
@@ -36,7 +38,9 @@ const appRoutes:Routes=[
     MatIconModule,
     MatTableModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
