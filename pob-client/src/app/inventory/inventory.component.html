@@ -17,7 +17,7 @@
           <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
           <span>POB</span>
           <span class="fill-space"></span>
-          <button mat-raised-button color="accent">Checkout ({{selectedItems}})</button>
+          <button mat-raised-button color="accent"(click)="goToCheckout()">Checkout ({{selectedItems}})</button>
         </mat-toolbar-row>
       </mat-toolbar>
       <div class="example-container mat-elevation-z8">
@@ -29,29 +29,43 @@
       
         <mat-table #table [dataSource]="dataSource">
       
-          <!-- Position Column -->
-          <ng-container matColumnDef="position">
-            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+              <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            (change)="updateCheckout()"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            (change)="updateCheckout()"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </mat-cell>
           </ng-container>
-      
           <!-- Name Column -->
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
           </ng-container>
       
-          <!-- Weight Column -->
-          <ng-container matColumnDef="weight">
-            <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
           </ng-container>
       
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="symbol">
-            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+          <!-- Availibility Column -->
+          <ng-container matColumnDef="available">
+            <mat-header-cell *matHeaderCellDef> Available </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <mat-icon 
+              [ngClass]="{'is-available':element.available, 'not-available':!element.available}">{{element.available ? 'check':'clear'}}</mat-icon></mat-cell>
           </ng-container>
+      
+
       
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

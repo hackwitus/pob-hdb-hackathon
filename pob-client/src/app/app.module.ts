@@ -3,10 +3,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { HttpClientModule,HttpClientJsonpModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import {InventoryComponent} from "./inventory/inventory.component"
 import {CheckoutComponent} from './checkout/checkout.component';
+
+
 
 import {MatToolbarModule,
         MatButtonModule,
@@ -15,7 +18,8 @@ import {MatToolbarModule,
         MatSidenavModule,
         MatListModule,
         MatFormFieldModule,
-        MatInputModule} from "@angular/material"
+        MatInputModule,
+        MatCheckboxModule} from "@angular/material"
         
 const appRoutes:Routes=[
   {path:'', redirectTo:'inventory', pathMatch:'full'},
@@ -30,6 +34,8 @@ const appRoutes:Routes=[
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes
@@ -41,7 +47,8 @@ const appRoutes:Routes=[
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
