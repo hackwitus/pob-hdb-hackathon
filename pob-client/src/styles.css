@@ -21,7 +21,11 @@ body {
 }
 
 #title {
-  
+
+}
+
+#checkoutBtn {
+  float: right;
 }
 
 #filters {

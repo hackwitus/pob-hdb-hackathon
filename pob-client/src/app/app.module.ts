@@ -13,7 +13,7 @@ import {MatToolbarModule,
         MatIconModule,
         MatTableModule,
         MatSidenavModule,
-        MatListModule} from "@angular/material"
+        MatListModule } from "@angular/material";
 const appRoutes:Routes=[
   {path:'', redirectTo:'inventory', pathMatch:'full'},
   {path:'inventory', component:InventoryComponent},
