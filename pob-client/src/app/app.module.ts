@@ -13,13 +13,10 @@ import {MatToolbarModule,
         MatIconModule,
         MatTableModule,
         MatSidenavModule,
-<<<<<<< HEAD
         MatListModule,
         MatFormFieldModule,
         MatInputModule} from "@angular/material"
-=======
-        MatListModule } from "@angular/material";
->>>>>>> 7ea0205ddf57659b3df471d92e3396e898caec97
+        
 const appRoutes:Routes=[
   {path:'', redirectTo:'inventory', pathMatch:'full'},
   {path:'inventory', component:InventoryComponent},
