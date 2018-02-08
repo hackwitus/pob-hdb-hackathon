@@ -4,37 +4,46 @@
 
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>PobClient Checkout</title>
+  <title>POB Client Checkout</title>
   <base href="/">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="checkout.component.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
-  <a href="javascript:history.back()">Go Back</a>
-  <h1>Welcome to checkout!</h1>
-  <p>Please enter your phone number to verify your user.</p>
-  <input type="text" required="true" placeholder="Phone Number" id="phoneNumber">
-  <button (click)="checkUser()">Submit</button>
+  <a href="javascript:history.back()"><</a>
 
-//if promise rejects
-  <form action="/action_page.php" style="display: none;">
-  Name:<br>
-  <input type="text" name="name">
-  <br>
-  Email:<br>
-  <input type="text" name="email">
-  <br>
-  Phone number:<br>
-  <input type="text" name="phonenumber">
-  <br><br>
-  <input type="submit" value="Submit">
-</form>
+  <div id="bodyGroup">
+  <div id="initCheckout">
+    <h1>Checkout</h1>
+    <p>Please enter your phone number to verify your account:</p>
+    <input type="text" required="true" placeholder="Phone Number" id="phoneNumber">
+    <button (click)="checkUser()">Submit</button>
+  </div>
 
-//if promise succeeds
+  <form id="createUsr" class="hidden">
+    Name:<br>
+    <input id="name" type="text" name="name">
+    <br> Email:
+    <br>
+    <input id="email" type="text" name="email">
+    <br> Phone number:<br>
+    <input id="number" type="text" name="number">
+    <br><br>
+    <button (click)="createUser()" type="button" value="Submit">Submit</button>
+  </form>
 
+  <div id="checkout" class="hidden">
+    <button (click)="checkout()">Checkout</button>
+  </div>
+  </div>
 </body>
+
 </html>
