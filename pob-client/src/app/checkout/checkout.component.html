@@ -1,0 +1,40 @@
+<!-- <h1>
+  checkout works!
+</h1> -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PobClient Checkout</title>
+  <base href="/">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <a href="javascript:history.back()">Go Back</a>
+  <h1>Welcome to checkout!</h1>
+  <p>Please enter your phone number to verify your user.</p>
+  <input type="text" required="true" placeholder="Phone Number" id="phoneNumber">
+  <button (click)="checkUser()">Submit</button>
+
+//if promise rejects
+  <form action="/action_page.php" style="display: none;">
+  Name:<br>
+  <input type="text" name="name">
+  <br>
+  Email:<br>
+  <input type="text" name="email">
+  <br>
+  Phone number:<br>
+  <input type="text" name="phonenumber">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+//if promise succeeds
+
+</body>
+</html>
