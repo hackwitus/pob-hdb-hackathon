@@ -12,15 +12,19 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  checkUser() {
+    console.log("Starting code");
+
+    var url = "https://pod-hdb-api.herokuapp.com/customers/:phoneNumbe";
+
+    dbGetAsync(url, displayData);
+ }
 }
 
-function checkUser() {
-  var url = "https://pod-hdb-api.herokuapp.com/customer/:phoneNumber";
-  console.log("Starting code");
-  dbGetAsync(url, displayData);
-}
 
 function dbGetAsync(url, callback) {
+  console.log('Hi')
   var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
@@ -32,17 +36,20 @@ function dbGetAsync(url, callback) {
 
 var displayData = function(data) {
   console.log("got the data!");
+  var input = <HTMLInputElement>document.getElementById('phoneNumber');
+  console.log('input # '+input.value);
 
   if (data.length == 0) {
+    console.log('no users found');
     //present user creation screen
   }
 
-  // data.forEach(number) {
-  //
-  //   if (document.getElementById('#phoneNumber') == number) {
-  //     //present checkout screen
-  //   }
-  //   //present user creation screen
-  // }
-   console.log(data[0].name == "Raspberry Pi 3");
+  Object.keys(data).forEach(function(number) {
+    if (document.getElementById('#phoneNumber') == data[number]) {
+      console.log('user found');
+      //present checkout screen
+    }
+  });
+  console.log('user not found');
+    //present user creation screen
 }
